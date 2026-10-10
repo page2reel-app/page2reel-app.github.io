@@ -1,0 +1,601 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080811">
+  <meta name="description" content="Page2Reel — Think It. Write It. Create It. A focused writing space for your stories, ideas and screenplays.">
+  <title>Page2Reel — Think It. Write It. Create It.</title>
+
+  <style>
+    :root {
+      --bg: #080811;
+      --panel: #11111f;
+      --purple: #9b72ff;
+      --blue: #658cff;
+      --text: #f7f5ff;
+      --muted: #aaa8c2;
+      --border: rgba(255,255,255,.10);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background:
+        radial-gradient(ellipse at 50% 0%, #20143f 0%, transparent 48%),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container { width: min(1120px, 90%); margin: auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(8,8,17,.82);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 850;
+      font-size: 1.25rem;
+      letter-spacing: -.5px;
+    }
+
+    .logo {
+      width: 43px;
+      height: 43px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--purple), var(--blue));
+      color: white;
+      font-size: 13px;
+      font-weight: 900;
+      box-shadow: 0 0 28px #8b5cf633;
+    }
+
+    .brand span span { color: #b39aff; }
+
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      align-items: center;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .nav-links a:hover { color: white; }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px 19px;
+      font-weight: 750;
+      transition: transform .2s, box-shadow .2s;
+      cursor: pointer;
+    }
+
+    .button:hover { transform: translateY(-2px); }
+
+    .button-primary {
+      background: linear-gradient(110deg, #8755f5, #536ff1);
+      border: 0;
+      box-shadow: 0 8px 30px #7956ff30;
+      color: white;
+    }
+
+    .button-secondary { background: #ffffff08; }
+
+    .hero {
+      min-height: 660px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 100px 0 85px;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: #7545ff18;
+      filter: blur(70px);
+      top: 20%;
+      left: calc(50% - 160px);
+      pointer-events: none;
+    }
+
+    .hero-content { position: relative; max-width: 850px; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 13px;
+      border: 1px solid #a78bfa40;
+      background: #8b5cf610;
+      color: #c5b5ff;
+      border-radius: 100px;
+      font-size: .83rem;
+      margin-bottom: 27px;
+    }
+
+    .eyebrow i {
+      width: 7px;
+      height: 7px;
+      background: #a78bfa;
+      border-radius: 50%;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 8vw, 5.8rem);
+      line-height: 1.04;
+      letter-spacing: -4px;
+      font-weight: 900;
+    }
+
+    .gradient-text {
+      background: linear-gradient(100deg, #c5a7ff, #8d9dff 55%, #7adfff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: 26px auto 30px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 13px;
+    }
+
+    .microcopy {
+      color: #85829f;
+      font-size: .83rem;
+      margin-top: 18px;
+    }
+
+    .section { padding: 90px 0; }
+
+    .section-heading {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 42px;
+    }
+
+    .kicker {
+      text-transform: uppercase;
+      color: #b6a1ff;
+      letter-spacing: 2px;
+      font-size: .76rem;
+      font-weight: 800;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 5vw, 3.15rem);
+      line-height: 1.2;
+      letter-spacing: -1.5px;
+      margin: 12px 0;
+    }
+
+    .section-heading p, .muted { color: var(--muted); }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 17px;
+    }
+
+    .feature {
+      background: linear-gradient(145deg, #171629, #0e0e19);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 25px;
+      transition: transform .2s, border-color .2s;
+    }
+
+    .feature:hover {
+      transform: translateY(-4px);
+      border-color: #9b72ff70;
+    }
+
+    .feature-icon {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 15px;
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, #8b5cf629, #536ff126);
+      border: 1px solid #a78bfa25;
+      font-size: 22px;
+    }
+
+    h3 { font-size: 1.12rem; margin-bottom: 8px; }
+    .feature p { color: var(--muted); font-size: .93rem; }
+
+    .showcase {
+      background: linear-gradient(180deg, transparent, #11102070, transparent);
+    }
+
+    .screens-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .screen-card {
+      padding: 14px;
+      border: 1px solid var(--border);
+      background: #11111e;
+      border-radius: 23px;
+    }
+
+    .screen-placeholder {
+      min-height: 220px;
+      border-radius: 15px;
+      background:
+        radial-gradient(ellipse at 50% 20%, #54359a55, transparent 65%),
+        #090912;
+      border: 1px dashed #8b79bd70;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 25px;
+      color: #b8add6;
+    }
+
+    .screen-placeholder strong {
+      display: block;
+      color: white;
+      margin-bottom: 6px;
+    }
+
+    .screen-caption { padding: 16px 5px 5px; }
+    .screen-caption p { color: var(--muted); font-size: .9rem; }
+
+    .philosophy {
+      text-align: center;
+      padding: 75px 25px;
+      border: 1px solid #a78bfa35;
+      border-radius: 30px;
+      background:
+        radial-gradient(ellipse at 50% 0%, #7047d22a, transparent 65%),
+        #10101c;
+    }
+
+    .philosophy h2 { max-width: 750px; margin: 15px auto; }
+    .philosophy p { color: var(--muted); max-width: 630px; margin: auto; }
+
+    .download-card {
+      text-align: center;
+      padding: 65px 25px;
+      border-radius: 28px;
+      border: 1px solid #8c76ff40;
+      background: linear-gradient(135deg, #21163b, #11152b 70%, #10101a);
+    }
+
+    .download-card p {
+      max-width: 560px;
+      margin: 14px auto 24px;
+      color: #c0bed3;
+    }
+
+    .coming-soon {
+      display: inline-block;
+      padding: 11px 19px;
+      border-radius: 12px;
+      border: 1px solid #bba5ff55;
+      background: #ffffff08;
+      color: #d8ceff;
+      font-weight: 750;
+    }
+
+    footer {
+      padding: 30px 0;
+      margin-top: 70px;
+      border-top: 1px solid var(--border);
+      color: #8f8ba8;
+      font-size: .86rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 760px) {
+      .nav { min-height: 68px; }
+      .nav-links { gap: 13px; font-size: .82rem; }
+      .nav-links .hide-mobile { display: none; }
+      .brand { font-size: 1.05rem; }
+      .logo { width: 38px; height: 38px; }
+      .hero { min-height: auto; padding: 90px 0 70px; }
+      h1 { letter-spacing: -2px; }
+      .features { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .section { padding: 65px 0; }
+    }
+
+    @media (max-width: 480px) {
+      .features, .screens-grid { grid-template-columns: 1fr; }
+      .nav-links { gap: 10px; }
+      .nav-links a { font-size: .78rem; }
+      .hero p { font-size: 1rem; }
+      .feature { padding: 22px; }
+      .screen-placeholder { min-height: 190px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="Page2Reel home">
+        <div class="logo">P2R</div>
+        <span>Page<span>2</span>Reel</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#features">Features</a>
+        <a class="hide-mobile" href="#screenshots">App Preview</a>
+        <a href="#download">Get the App</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container" id="home">
+      <div class="hero-content">
+        <div class="eyebrow"><i></i> YOUR CREATIVE SPACE</div>
+
+        <h1>
+          Think It.<br>
+          <span class="gradient-text">Write It. Create It.</span>
+        </h1>
+
+        <p>
+          Your stories. Your ideas. Your screenplays.
+          A focused writing space to turn your imagination into words.
+          Organize projects, write screenplays, capture ideas in Scratchpad,
+          and keep your work moving with Auto-Save.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button button-primary" href="#download">
+            Explore Page2Reel <span aria-hidden="true">↗</span>
+          </a>
+          <a class="button button-secondary" href="#features">
+            Discover Features ↓
+          </a>
+        </div>
+
+        <div class="microcopy">Made for the stories only you can tell.</div>
+      </div>
+    </section>
+
+    <section class="section container" id="features">
+      <div class="section-heading">
+        <div class="kicker">Made for your workflow</div>
+        <h2>Everything starts with an idea.</h2>
+        <p>
+          Keep your creative process organized, from the first thought
+          to the screenplay you're building.
+        </p>
+      </div>
+
+      <div class="features">
+        <article class="feature">
+          <div class="feature-icon" aria-hidden="true">✍</div>
+          <h3>Screenplay Writing</h3>
+          <p>Focus on your scenes, characters, dialogue and the story unfolding on the page.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature-icon" aria-hidden="true">▤</div>
+          <h3>Stories, Ideas & Notes</h3>
+          <p>Capture inspiration and keep your stories, ideas and notes together in Scratchpad.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature-icon" aria-hidden="true">▦</div>
+          <h3>Organized Projects</h3>
+          <p>Keep your writing projects organized and return to your work when inspiration strikes.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature-icon" aria-hidden="true">↻</div>
+          <h3>Auto-Save</h3>
+          <p>Keep your writing workflow moving without needing to stop after every thought to save manually.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature-icon" aria-hidden="true">⇧</div>
+          <h3>Import & Export</h3>
+          <p>Bring existing work into your workflow and export your writing in supported formats.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature-icon" aria-hidden="true">▧</div>
+          <h3>Title Page</h3>
+          <p>Give your screenplay a dedicated title page with the details of your project.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature-icon" aria-hidden="true">↶</div>
+          <h3>Recycle Bin</h3>
+          <p>Keep deleted projects separate from your active workspace while managing your work.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature-icon" aria-hidden="true">◉</div>
+          <h3>A Focused Workspace</h3>
+          <p>A writing-first space designed to keep the attention on your ideas and your words.</p>
+        </article>
+
+        <article class="feature">
+          <div class="feature-icon" aria-hidden="true">✧</div>
+          <h3>Your Creative Journey</h3>
+          <p>Build your stories one scene, one note and one small idea at a time.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section showcase" id="screenshots">
+      <div class="container">
+        <div class="section-heading">
+          <div class="kicker">Inside the app</div>
+          <h2>Your writing space, at a glance.</h2>
+          <p>
+            Explore the main parts of the Page2Reel experience.
+            Official app screenshots will appear here once added.
+          </p>
+        </div>
+
+        <div class="screens-grid">
+          <article class="screen-card">
+            <div class="screen-placeholder">
+              <div>
+                <strong>Home & Writing Pulse</strong>
+                Add your original home screen image as
+                <code>images/home.png</code>
+              </div>
+            </div>
+            <div class="screen-caption">
+              <h3>Your Writing Home</h3>
+              <p>See your writing activity and get back to your projects.</p>
+            </div>
+          </article>
+
+          <article class="screen-card">
+            <div class="screen-placeholder">
+              <div>
+                <strong>Create New Project</strong>
+                Add your original project screen as
+                <code>images/new-project.png</code>
+              </div>
+            </div>
+            <div class="screen-caption">
+              <h3>Start Something New</h3>
+              <p>Create a project or bring existing writing into your workspace.</p>
+            </div>
+          </article>
+
+          <article class="screen-card">
+            <div class="screen-placeholder">
+              <div>
+                <strong>Screenplay Editor</strong>
+                Add your original editor image as
+                <code>images/screenplay.png</code>
+              </div>
+            </div>
+            <div class="screen-caption">
+              <h3>Write Your Screenplay</h3>
+              <p>Give your characters, scenes and dialogue room to develop.</p>
+            </div>
+          </article>
+
+          <article class="screen-card">
+            <div class="screen-placeholder">
+              <div>
+                <strong>Scratchpad</strong>
+                Add your original Scratchpad image as
+                <code>images/scratchpad.png</code>
+              </div>
+            </div>
+            <div class="screen-caption">
+              <h3>Catch Every Idea</h3>
+              <p>Keep stories, ideas and notes together as inspiration arrives.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="philosophy">
+        <div class="kicker">The Page2Reel philosophy</div>
+        <h2>No AI. No shortcuts.<br><span class="gradient-text">Just your story.</span></h2>
+        <p>
+          No AI-generated writing. No shortcuts. Just a focused space
+          for your own ideas, your own words, and your creative journey.
+          The story begins with you.
+        </p>
+      </div>
+    </section>
+
+    <section class="section container" id="download">
+      <div class="download-card">
+        <div class="kicker">Your next story starts here</div>
+        <h2>Ready to turn pages into reels?</h2>
+        <p>
+          Page2Reel is getting ready for its next chapter.
+          The official Android download link will be added here when it is ready.
+        </p>
+        <span class="coming-soon">Android app · Coming Soon</span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <a class="brand" href="#home">
+        <div class="logo">P2R</div>
+        <span>Page<span>2</span>Reel</span>
+      </a>
+      <p>Think It. Write It. Create It.</p>
+      <p>© <span id="year">2026</span> Page2Reel</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+</body>
+        </html>
+        
