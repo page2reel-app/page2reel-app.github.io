@@ -2,21 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#080811">
-  <meta name="description" content="Page2Reel — Think It. Write It. Create It. A focused writing space for your stories, ideas and screenplays.">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090811">
+  <meta name="description" content="Page2Reel is a focused writing space for screenplays, stories, ideas and notes. Think It. Write It. Create It.">
   <title>Page2Reel — Think It. Write It. Create It.</title>
 
   <style>
     :root {
-      --bg: #080811;
-      --panel: #11111f;
-      --purple: #9b72ff;
-      --blue: #658cff;
+      color-scheme: dark;
+      --bg: #090811;
+      --panel: #11111e;
       --text: #f7f5ff;
-      --muted: #aaa8c2;
-      --border: rgba(255, 255, 255, .10);
+      --muted: #aaa7bd;
+      --purple: #a98aff;
+      --line: rgba(255, 255, 255, .105);
+      --content: 1080px;
     }
 
     * {
@@ -27,18 +27,25 @@
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 90px;
+      scroll-padding-top: 88px;
     }
 
     body {
-      background:
-        radial-gradient(ellipse at 50% 0%, #20143f 0%, transparent 48%),
-        var(--bg);
+      min-width: 280px;
+      overflow-x: hidden;
       color: var(--text);
+      background:
+        radial-gradient(
+          ellipse at 50% -10%,
+          rgba(101, 64, 170, .23),
+          transparent 43%
+        ),
+        var(--bg);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system,
         BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.65;
-      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
     a {
@@ -46,9 +53,26 @@
       text-decoration: none;
     }
 
+    a:focus-visible {
+      outline: 2px solid var(--purple);
+      outline-offset: 4px;
+    }
+
     .container {
-      width: min(1120px, 90%);
+      width: min(var(--content), 90%);
       margin-inline: auto;
+    }
+
+    .gradient-text {
+      background: linear-gradient(
+        100deg,
+        #d0b5ff 0%,
+        #a2a1ff 55%,
+        #82d7ff 100%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     /* HEADER */
@@ -56,442 +80,410 @@
     header {
       position: sticky;
       top: 0;
-      z-index: 10;
-      background: rgba(8, 8, 17, .86);
+      z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: rgba(9, 8, 17, .88);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--border);
     }
 
     .nav {
-      min-height: 76px;
+      min-height: 68px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      gap: 16px;
     }
 
     .brand {
-      display: inline-flex;
-      align-items: center;
+      flex: 0 0 auto;
+      font-size: 1.12rem;
       font-weight: 850;
-      font-size: 1.3rem;
-      letter-spacing: -.6px;
+      letter-spacing: -.65px;
       white-space: nowrap;
     }
 
-    .brand .brand-two {
-      color: #b39aff;
+    .brand-two {
+      color: #c1a8ff;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 28px;
+      gap: 24px;
       color: var(--muted);
-      font-size: .92rem;
+      font-size: .88rem;
     }
 
     .nav-links a {
-      transition: color .2s ease;
+      transition: color .18s ease, background .18s ease;
     }
 
-    .nav-links a:hover,
-    .nav-links a:focus-visible {
+    .nav-links a:hover {
       color: #fff;
     }
 
     .nav-links .nav-cta {
-      padding: 9px 15px;
-      border: 1px solid #a78bfa55;
-      border-radius: 12px;
-      color: #e3d9ff;
-      background: #8b5cf610;
+      padding: 8px 13px;
+      border: 1px solid rgba(180, 151, 255, .35);
+      border-radius: 11px;
+      color: #e5dcff;
+      background: rgba(155, 114, 255, .07);
     }
 
     .nav-links .nav-cta:hover {
-      background: #8b5cf625;
-    }
-
-    /* BUTTONS */
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      min-height: 48px;
-      padding: 12px 20px;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      font-weight: 750;
-      font-size: .94rem;
-      transition:
-        transform .2s ease,
-        box-shadow .2s ease,
-        background .2s ease;
-      cursor: pointer;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-    }
-
-    .button:focus-visible,
-    a:focus-visible {
-      outline: 2px solid #bba5ff;
-      outline-offset: 4px;
-    }
-
-    .button-primary {
-      background: linear-gradient(110deg, #8755f5, #536ff1);
-      border: 0;
-      box-shadow: 0 8px 30px #7956ff30;
-      color: #fff;
-    }
-
-    .button-primary:hover {
-      box-shadow: 0 12px 34px #7956ff45;
-    }
-
-    .button-secondary {
-      background: #ffffff08;
-      color: #f7f5ff;
-    }
-
-    .button-secondary:hover {
-      background: #ffffff12;
+      background: rgba(155, 114, 255, .14);
     }
 
     /* HERO */
 
     .hero {
-      min-height: 660px;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      padding: 90px 0 85px;
       position: relative;
       isolation: isolate;
+      display: grid;
+      place-items: center;
+      min-height: 610px;
+      padding: 68px 0 82px;
+      text-align: center;
     }
 
     .hero::before {
       content: "";
       position: absolute;
       z-index: -1;
-      width: 340px;
-      height: 340px;
+      top: 12%;
+      left: 50%;
+      width: 310px;
+      height: 310px;
+      transform: translateX(-50%);
       border-radius: 50%;
-      background: #7545ff20;
-      filter: blur(75px);
-      top: 16%;
-      left: calc(50% - 170px);
+      background: rgba(118, 74, 255, .14);
+      filter: blur(76px);
       pointer-events: none;
     }
 
     .hero-content {
       width: 100%;
-      max-width: 850px;
+      max-width: 800px;
     }
-
-    /* ORIGINAL LOGO IMAGE */
 
     .hero-logo {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 0 auto 28px;
+      margin: 0 auto 23px;
     }
 
     .hero-logo img {
       display: block;
-      width: 124px;
-      height: 124px;
+      width: 92px;
+      height: 92px;
       object-fit: contain;
-      border-radius: 25px;
-      box-shadow: 0 12px 45px #8b5cf625;
+      border-radius: 21px;
+      box-shadow: 0 10px 36px rgba(120, 84, 255, .16);
     }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 9px;
-      padding: 7px 14px;
-      border: 1px solid #a78bfa40;
-      background: #8b5cf610;
-      color: #c5b5ff;
-      border-radius: 100px;
-      font-size: .82rem;
+      gap: 8px;
+      margin-bottom: 21px;
+      padding: 6px 12px;
+      border: 1px solid rgba(180, 151, 255, .24);
+      border-radius: 999px;
+      color: #cdbaff;
+      background: rgba(155, 114, 255, .07);
+      font-size: .73rem;
       font-weight: 750;
-      letter-spacing: .5px;
-      margin-bottom: 27px;
+      letter-spacing: .8px;
     }
 
-    .eyebrow i {
-      width: 7px;
-      height: 7px;
-      flex: 0 0 7px;
-      background: #a78bfa;
+    .eyebrow-dot {
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
-      box-shadow: 0 0 12px #a78bfa70;
+      background: #b89cff;
+      box-shadow: 0 0 10px rgba(184, 156, 255, .6);
     }
 
     h1 {
-      font-size: clamp(2.7rem, 8vw, 5.8rem);
-      line-height: 1.07;
-      letter-spacing: -4px;
+      font-size: clamp(2.75rem, 7.8vw, 5.3rem);
+      line-height: 1.06;
+      letter-spacing: -.058em;
       font-weight: 900;
     }
 
-    .gradient-text {
-      background: linear-gradient(100deg, #c5a7ff, #8d9dff 55%, #7adfff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .hero p {
-      max-width: 650px;
-      margin: 26px auto 30px;
+    .hero-copy {
+      max-width: 600px;
+      margin: 22px auto 27px;
       color: var(--muted);
-      font-size: 1.08rem;
+      font-size: 1rem;
+      line-height: 1.8;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 13px;
+      gap: 12px;
     }
 
-    .microcopy {
-      color: #9995b2;
-      font-size: .85rem;
-      margin-top: 20px;
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 46px;
+      padding: 11px 19px;
+      border: 1px solid transparent;
+      border-radius: 13px;
+      font-size: .9rem;
+      font-weight: 750;
+      transition:
+        transform .18s ease,
+        box-shadow .18s ease,
+        background .18s ease;
     }
 
-    /* COMMON SECTIONS */
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      color: white;
+      background: linear-gradient(110deg, #8e5cf6, #5875f3);
+      box-shadow: 0 8px 25px rgba(121, 86, 255, .22);
+    }
+
+    .button-primary:hover {
+      box-shadow: 0 11px 29px rgba(121, 86, 255, .32);
+    }
+
+    .button-secondary {
+      border-color: var(--line);
+      background: rgba(255, 255, 255, .035);
+    }
+
+    .button-secondary:hover {
+      background: rgba(255, 255, 255, .07);
+    }
+
+    .hero-note {
+      margin-top: 17px;
+      color: #8f8ba5;
+      font-size: .8rem;
+    }
+
+    /* SECTIONS */
 
     .section {
-      padding: 88px 0;
+      padding: 76px 0;
     }
 
     .section-heading {
+      max-width: 670px;
+      margin: 0 auto 34px;
       text-align: center;
-      max-width: 680px;
-      margin: 0 auto 42px;
     }
 
     .kicker {
-      text-transform: uppercase;
-      color: #b6a1ff;
-      letter-spacing: 2px;
-      font-size: .76rem;
+      color: #b8a2ff;
+      font-size: .72rem;
       font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
 
     h2 {
-      font-size: clamp(2rem, 5vw, 3.15rem);
-      line-height: 1.2;
-      letter-spacing: -1.5px;
       margin: 12px 0;
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.17;
+      letter-spacing: -.047em;
     }
 
-    .section-heading p,
-    .muted {
+    .section-heading p {
+      max-width: 520px;
+      margin: 12px auto 0;
       color: var(--muted);
+      font-size: .95rem;
     }
 
-    /* FEATURES */
+    /* FIVE CORE FEATURES */
 
     .features {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 17px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 15px;
     }
 
     .feature {
-      background: linear-gradient(145deg, #171629, #0e0e19);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 25px;
-      transition:
-        transform .2s ease,
-        border-color .2s ease;
+      padding: 23px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: linear-gradient(
+        145deg,
+        rgba(23, 22, 39, .96),
+        rgba(14, 14, 25, .98)
+      );
+      transition: transform .2s ease, border-color .2s ease;
     }
 
     .feature:hover {
-      transform: translateY(-4px);
-      border-color: #9b72ff70;
+      transform: translateY(-3px);
+      border-color: rgba(169, 138, 255, .45);
+    }
+
+    .feature:last-child {
+      grid-column: 1 / -1;
     }
 
     .feature-icon {
       display: grid;
       place-items: center;
-      width: 48px;
-      height: 48px;
-      border-radius: 15px;
-      margin-bottom: 18px;
-      background: linear-gradient(135deg, #8b5cf629, #536ff126);
-      border: 1px solid #a78bfa25;
-      color: #d2c2ff;
-      font-size: 22px;
+      width: 42px;
+      height: 42px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(180, 151, 255, .18);
+      border-radius: 13px;
+      color: #d7c8ff;
+      background: linear-gradient(
+        135deg,
+        rgba(139, 92, 246, .19),
+        rgba(83, 111, 241, .10)
+      );
+      font-size: 19px;
     }
 
-    h3 {
-      font-size: 1.12rem;
-      line-height: 1.4;
-      margin-bottom: 9px;
+    .feature h3 {
+      margin-bottom: 7px;
+      font-size: 1.04rem;
+      letter-spacing: -.02em;
     }
 
     .feature p {
+      max-width: 460px;
       color: var(--muted);
-      font-size: .93rem;
+      font-size: .89rem;
+      line-height: 1.75;
     }
 
-    /* PHILOSOPHY */
+    /* BRAND PHILOSOPHY */
 
     .philosophy {
-      text-align: center;
-      padding: 75px 25px;
-      border: 1px solid #a78bfa35;
-      border-radius: 30px;
+      padding: 58px 24px;
+      border: 1px solid rgba(169, 138, 255, .25);
+      border-radius: 26px;
       background:
-        radial-gradient(ellipse at 50% 0%, #7047d22a, transparent 65%),
-        #10101c;
+        radial-gradient(
+          ellipse at 50% 0%,
+          rgba(112, 71, 210, .17),
+          transparent 68%
+        ),
+        #10101b;
+      text-align: center;
     }
 
     .philosophy h2 {
-      max-width: 750px;
-      margin: 15px auto;
+      margin: 16px auto;
+      max-width: 720px;
     }
 
     .philosophy p {
-      color: var(--muted);
-      max-width: 630px;
+      max-width: 560px;
       margin: auto;
+      color: var(--muted);
+      font-size: .96rem;
+      line-height: 1.85;
     }
 
     /* DOWNLOAD */
 
     .download-card {
-      text-align: center;
-      padding: 65px 25px;
-      border-radius: 28px;
-      border: 1px solid #8c76ff40;
+      padding: 52px 24px;
+      border: 1px solid rgba(140, 118, 255, .29);
+      border-radius: 26px;
       background:
-        radial-gradient(ellipse at 50% 0%, #7047d225, transparent 65%),
-        linear-gradient(135deg, #21163b, #11152b 70%, #10101a);
+        radial-gradient(
+          ellipse at 12% 0%,
+          rgba(112, 71, 210, .18),
+          transparent 62%
+        ),
+        linear-gradient(140deg, #19152b, #10101b 78%);
+      text-align: center;
     }
 
     .download-card h2 {
-      max-width: 750px;
-      margin: 12px auto;
+      max-width: 680px;
+      margin: 13px auto;
     }
 
     .download-card p {
-      max-width: 560px;
-      margin: 14px auto 24px;
-      color: #c0bed3;
+      max-width: 520px;
+      margin: 14px auto 22px;
+      color: var(--muted);
+      font-size: .95rem;
+      line-height: 1.8;
     }
 
     .coming-soon {
-      display: inline-block;
-      padding: 11px 19px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 16px;
+      border: 1px solid rgba(187, 165, 255, .36);
       border-radius: 12px;
-      border: 1px solid #bba5ff55;
-      background: #ffffff08;
-      color: #d8ceff;
+      color: #ded4ff;
+      background: rgba(255, 255, 255, .035);
+      font-size: .88rem;
       font-weight: 750;
-      font-size: .94rem;
     }
 
     /* FOOTER */
 
     footer {
-      padding: 30px 0;
-      margin-top: 45px;
-      border-top: 1px solid var(--border);
-      color: #8f8ba8;
-      font-size: .86rem;
+      margin-top: 32px;
+      border-top: 1px solid var(--line);
     }
 
     .footer-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
       flex-wrap: wrap;
+      gap: 12px 20px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+      color: #918da6;
+      font-size: .82rem;
     }
 
     .footer-brand {
-      color: #f7f5ff;
+      color: var(--text);
+      font-size: 1rem;
       font-weight: 850;
-      font-size: 1.08rem;
       letter-spacing: -.4px;
     }
 
-    .footer-brand .brand-two {
-      color: #b39aff;
-    }
+    /* RESPONSIVE LAYOUT */
 
-    /* TABLET */
-
-    @media (max-width: 760px) {
-      .nav {
-        min-height: 68px;
-        gap: 12px;
-      }
-
-      .brand {
-        font-size: 1.12rem;
-      }
-
-      .nav-links {
-        gap: 15px;
-        font-size: .84rem;
-      }
-
-      .nav-links .nav-cta {
-        padding: 8px 11px;
-      }
-
-      .hero {
-        min-height: auto;
-        padding: 75px 0 65px;
-      }
-
-      .hero-logo img {
-        width: 112px;
-        height: 112px;
-      }
-
-      h1 {
-        letter-spacing: -2px;
-      }
-
+    @media (min-width: 761px) {
       .features {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
       }
 
-      .section {
-        padding: 65px 0;
-      }
-
-      .philosophy {
-        padding: 58px 23px;
+      .feature:last-child {
+        grid-column: auto;
       }
     }
 
-    /* MOBILE */
-
-    @media (max-width: 480px) {
+    @media (max-width: 600px) {
       .container {
         width: 90%;
       }
 
       .nav {
-        min-height: 64px;
+        min-height: 62px;
+        gap: 10px;
       }
 
       .brand {
@@ -499,103 +491,130 @@
       }
 
       .nav-links {
-        gap: 11px;
-      }
-
-      .nav-links a {
+        gap: 12px;
         font-size: .78rem;
       }
 
       .nav-links .nav-cta {
-        padding: 7px 9px;
+        padding: 7px 10px;
         border-radius: 10px;
       }
 
       .hero {
-        padding: 62px 0 55px;
+        min-height: auto;
+        padding: 52px 0 58px;
+      }
+
+      .hero::before {
+        width: 245px;
+        height: 245px;
       }
 
       .hero-logo {
-        margin-bottom: 24px;
+        margin-bottom: 21px;
       }
 
       .hero-logo img {
-        width: 100px;
-        height: 100px;
-        border-radius: 21px;
+        width: 86px;
+        height: 86px;
+        border-radius: 19px;
       }
 
       .eyebrow {
-        font-size: .74rem;
-        margin-bottom: 22px;
+        margin-bottom: 19px;
+        font-size: .69rem;
       }
 
       h1 {
-        font-size: clamp(2.45rem, 10vw, 3.4rem);
-        letter-spacing: -1.8px;
+        font-size: clamp(2.45rem, 9.4vw, 3.5rem);
       }
 
-      .hero p {
-        font-size: .97rem;
-        margin: 22px auto 25px;
+      .hero-copy {
+        margin: 19px auto 23px;
+        font-size: .93rem;
       }
 
       .hero-actions {
         flex-direction: column;
-        align-items: stretch;
-        max-width: 320px;
-        margin: auto;
+        width: min(100%, 330px);
+        margin-inline: auto;
       }
 
       .button {
         width: 100%;
       }
 
-      .features {
-        grid-template-columns: 1fr;
-        gap: 14px;
-      }
-
-      .feature {
-        padding: 22px;
+      .section {
+        padding: 59px 0;
       }
 
       .section-heading {
-        margin-bottom: 30px;
+        margin-bottom: 27px;
       }
 
-      h2 {
-        letter-spacing: -1px;
+      .section-heading p {
+        font-size: .91rem;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .feature,
+      .feature:last-child {
+        grid-column: auto;
+        padding: 21px;
+        border-radius: 19px;
+      }
+
+      .feature-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 14px;
+      }
+
+      .feature p {
+        font-size: .88rem;
       }
 
       .philosophy {
-        padding: 48px 20px;
-        border-radius: 23px;
+        padding: 43px 19px;
+        border-radius: 22px;
+      }
+
+      .philosophy p,
+      .download-card p {
+        font-size: .91rem;
       }
 
       .download-card {
-        padding: 48px 20px;
-        border-radius: 23px;
+        padding: 42px 19px;
+        border-radius: 22px;
       }
 
       .footer-inner {
         flex-direction: column;
         align-items: flex-start;
-        gap: 10px;
+        gap: 7px;
       }
     }
 
     @media (max-width: 350px) {
+      .brand {
+        font-size: .95rem;
+      }
+
       .nav-links {
         gap: 8px;
       }
 
-      .nav-links a {
-        font-size: .72rem;
+      .nav-links .nav-cta {
+        padding: 7px 8px;
       }
 
-      .brand {
-        font-size: .96rem;
+      h1 {
+        font-size: 2.3rem;
       }
     }
 
@@ -611,42 +630,35 @@
 </head>
 
 <body>
-
-  <!-- HEADER -->
   <header>
     <div class="container nav">
-
       <a class="brand" href="#home" aria-label="Page2Reel home">
-        <span>Page<span class="brand-two">2</span>Reel</span>
+        Page<span class="brand-two">2</span>Reel
       </a>
 
       <nav class="nav-links" aria-label="Main navigation">
         <a href="#features">Features</a>
         <a class="nav-cta" href="#download">Get the App</a>
       </nav>
-
     </div>
   </header>
 
   <main>
-
-    <!-- HERO -->
     <section class="hero container" id="home">
       <div class="hero-content">
 
-        <!-- Original logo image -->
         <div class="hero-logo">
           <img
             src="Canva%20AI%20Image%20Oct%209,%202026,%207_38_31%20AM_20261009_073944_0000.jpg"
-            alt="Page2Reel app logo"
-            width="124"
-            height="124"
+            alt="Page2Reel P2R logo"
+            width="92"
+            height="92"
             fetchpriority="high"
           >
         </div>
 
         <div class="eyebrow">
-          <i aria-hidden="true"></i>
+          <span class="eyebrow-dot" aria-hidden="true"></span>
           YOUR CREATIVE SPACE
         </div>
 
@@ -655,89 +667,63 @@
           <span class="gradient-text">Write It. Create It.</span>
         </h1>
 
-        <p>
+        <p class="hero-copy">
           Your stories. Your ideas. Your screenplays.
-          A focused writing space to turn your imagination into words.
-          Organize projects, write screenplays, capture ideas in Scratchpad,
-          and keep your work moving with Auto-Save.
+          A focused writing space to shape your stories, organize projects
+          and keep every important thought in your own words.
         </p>
 
         <div class="hero-actions">
           <a class="button button-primary" href="#download">
-            Explore Page2Reel
-            <span aria-hidden="true">↗</span>
+            Explore Page2Reel <span aria-hidden="true">↗</span>
           </a>
 
           <a class="button button-secondary" href="#features">
-            Discover Features
-            <span aria-hidden="true">↓</span>
+            Discover Features <span aria-hidden="true">↓</span>
           </a>
         </div>
 
-        <div class="microcopy">
+        <p class="hero-note">
           Made for the stories only you can tell.
-        </div>
-
+        </p>
       </div>
     </section>
 
-    <!-- FEATURES -->
     <section class="section container" id="features">
       <div class="section-heading">
         <div class="kicker">Made for your workflow</div>
-
         <h2>Everything starts with an idea.</h2>
-
         <p>
-          Keep your creative process organized, from the first thought
-          to the screenplay you're building.
+          Five essentials to help you write, organize and look after your work.
         </p>
       </div>
 
       <div class="features">
-
         <article class="feature">
           <div class="feature-icon" aria-hidden="true">✍</div>
           <h3>Screenplay Writing</h3>
           <p>
-            Focus on your scenes, characters, dialogue and the story
-            unfolding on the page.
+            Write scenes, action, character names and dialogue in a dedicated
+            workspace, so you can focus on the story as it unfolds.
           </p>
         </article>
 
         <article class="feature">
           <div class="feature-icon" aria-hidden="true">▤</div>
-          <h3>Stories, Ideas & Notes</h3>
+          <h3>Scratchpad</h3>
           <p>
-            Capture inspiration and keep your stories, ideas and notes
-            together in Scratchpad.
+            Keep Stories, Ideas and Notes together. Capture a sudden thought,
+            develop a concept or save important details before they slip away.
           </p>
         </article>
 
         <article class="feature">
           <div class="feature-icon" aria-hidden="true">▦</div>
-          <h3>Organized Projects</h3>
+          <h3>Projects</h3>
           <p>
-            Keep your writing projects organized and return to your work
-            whenever inspiration strikes.
-          </p>
-        </article>
-
-        <article class="feature">
-          <div class="feature-icon" aria-hidden="true">↻</div>
-          <h3>Auto-Save</h3>
-          <p>
-            Keep your writing moving with automatic saving, so you can
-            focus on your next thought.
-          </p>
-        </article>
-
-        <article class="feature">
-          <div class="feature-icon" aria-hidden="true">⇧</div>
-          <h3>Import & Export</h3>
-          <p>
-            Bring existing work into your workflow and export your writing
-            in supported formats.
+            Give each screenplay or writing project its own place. Return to
+            your work and continue where you left off without mixing different
+            stories together.
           </p>
         </article>
 
@@ -745,8 +731,9 @@
           <div class="feature-icon" aria-hidden="true">▧</div>
           <h3>Screenplay Title Page</h3>
           <p>
-            Give your screenplay a dedicated title page with the details
-            of your project.
+            Add the title, writer name, date and relevant details to a dedicated
+            title page, giving your screenplay a clear, professional first
+            impression.
           </p>
         </article>
 
@@ -754,36 +741,15 @@
           <div class="feature-icon" aria-hidden="true">↶</div>
           <h3>Recycle Bin</h3>
           <p>
-            Manage deleted projects separately from your active writing
-            workspace.
+            Keep deleted projects away from your active workspace and restore
+            them if you change your mind, before permanently removing them.
           </p>
         </article>
-
-        <article class="feature">
-          <div class="feature-icon" aria-hidden="true">◉</div>
-          <h3>A Focused Workspace</h3>
-          <p>
-            A writing-first space designed to keep the attention on your
-            ideas, your scenes and your words.
-          </p>
-        </article>
-
-        <article class="feature">
-          <div class="feature-icon" aria-hidden="true">✧</div>
-          <h3>Your Creative Journey</h3>
-          <p>
-            Build your stories one scene, one note and one small idea
-            at a time.
-          </p>
-        </article>
-
       </div>
     </section>
 
-    <!-- PHILOSOPHY -->
     <section class="section container">
       <div class="philosophy">
-
         <div class="kicker">The Page2Reel philosophy</div>
 
         <h2>
@@ -792,51 +758,37 @@
         </h2>
 
         <p>
-          No AI-generated writing. No shortcuts. Just a focused space
-          for your own ideas, your own words and your creative journey.
-          The story begins with you.
+          Your ideas. Your words. Your creative decisions. A focused space
+          built around the person behind every story: you.
         </p>
-
       </div>
     </section>
 
-    <!-- DOWNLOAD -->
     <section class="section container" id="download">
       <div class="download-card">
-
         <div class="kicker">Your next story starts here</div>
 
         <h2>Ready to turn pages into reels?</h2>
 
         <p>
-          Page2Reel is getting ready for its next chapter.
-          The official Android download link will be added here
-          when the app is ready.
+          Page2Reel is getting ready for its next chapter. The official Android
+          download link will appear here when the app is ready.
         </p>
 
-        <span class="coming-soon">
-          Android App · Coming Soon
-        </span>
-
+        <span class="coming-soon">Android App · Coming Soon</span>
       </div>
     </section>
-
   </main>
 
-  <!-- FOOTER -->
   <footer>
     <div class="container footer-inner">
-
-      <a class="footer-brand" href="#home" aria-label="Page2Reel home">
+      <a class="footer-brand" href="#home">
         Page<span class="brand-two">2</span>Reel
       </a>
 
       <p>Think It. Write It. Create It.</p>
 
-      <p>
-        © <span id="year">2026</span> Page2Reel
-      </p>
-
+      <p>© <span id="year">2026</span> Page2Reel</p>
     </div>
   </footer>
 
@@ -844,6 +796,5 @@
     document.getElementById("year").textContent =
       new Date().getFullYear();
   </script>
-
 </body>
 </html>
