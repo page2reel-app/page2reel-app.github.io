@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#080811">
   <meta name="description" content="Page2Reel — Think It. Write It. Create It. A focused writing space for your stories, ideas and screenplays.">
+
   <title>Page2Reel — Think It. Write It. Create It.</title>
 
   <style>
@@ -16,12 +16,19 @@
       --blue: #658cff;
       --text: #f7f5ff;
       --muted: #aaa8c2;
-      --border: rgba(255,255,255,.10);
+      --border: rgba(255, 255, 255, .10);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
 
     body {
       background:
@@ -34,16 +41,25 @@
       overflow-x: hidden;
     }
 
-    a { color: inherit; text-decoration: none; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-    .container { width: min(1120px, 90%); margin: auto; }
+    .container {
+      width: min(1120px, 90%);
+      margin-inline: auto;
+    }
+
+    /* HEADER */
 
     header {
       position: sticky;
       top: 0;
       z-index: 10;
-      background: rgba(8,8,17,.82);
+      background: rgba(8, 8, 17, .86);
       backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--border);
     }
 
@@ -56,110 +72,173 @@
     }
 
     .brand {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 11px;
       font-weight: 850;
-      font-size: 1.25rem;
-      letter-spacing: -.5px;
+      font-size: 1.3rem;
+      letter-spacing: -.6px;
+      white-space: nowrap;
     }
 
-    .logo {
-      width: 43px;
-      height: 43px;
-      display: grid;
-      place-items: center;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--purple), var(--blue));
-      color: white;
-      font-size: 13px;
-      font-weight: 900;
-      box-shadow: 0 0 28px #8b5cf633;
+    .brand .brand-two {
+      color: #b39aff;
     }
-
-    .brand span span { color: #b39aff; }
 
     .nav-links {
       display: flex;
-      gap: 26px;
       align-items: center;
+      gap: 28px;
       color: var(--muted);
       font-size: .92rem;
     }
 
-    .nav-links a:hover { color: white; }
+    .nav-links a {
+      transition: color .2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: #fff;
+    }
+
+    .nav-links .nav-cta {
+      padding: 9px 15px;
+      border: 1px solid #a78bfa55;
+      border-radius: 12px;
+      color: #e3d9ff;
+      background: #8b5cf610;
+    }
+
+    .nav-links .nav-cta:hover {
+      background: #8b5cf625;
+    }
+
+    /* BUTTONS */
 
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 9px;
+      min-height: 48px;
+      padding: 12px 20px;
       border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 12px 19px;
       font-weight: 750;
-      transition: transform .2s, box-shadow .2s;
+      font-size: .94rem;
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
       cursor: pointer;
     }
 
-    .button:hover { transform: translateY(-2px); }
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button:focus-visible,
+    a:focus-visible {
+      outline: 2px solid #bba5ff;
+      outline-offset: 4px;
+    }
 
     .button-primary {
       background: linear-gradient(110deg, #8755f5, #536ff1);
       border: 0;
       box-shadow: 0 8px 30px #7956ff30;
-      color: white;
+      color: #fff;
     }
 
-    .button-secondary { background: #ffffff08; }
+    .button-primary:hover {
+      box-shadow: 0 12px 34px #7956ff45;
+    }
+
+    .button-secondary {
+      background: #ffffff08;
+      color: #f7f5ff;
+    }
+
+    .button-secondary:hover {
+      background: #ffffff12;
+    }
+
+    /* HERO */
 
     .hero {
       min-height: 660px;
       display: grid;
       place-items: center;
       text-align: center;
-      padding: 100px 0 85px;
+      padding: 90px 0 85px;
       position: relative;
+      isolation: isolate;
     }
 
     .hero::before {
       content: "";
       position: absolute;
-      width: 320px;
-      height: 320px;
+      z-index: -1;
+      width: 340px;
+      height: 340px;
       border-radius: 50%;
-      background: #7545ff18;
-      filter: blur(70px);
-      top: 20%;
-      left: calc(50% - 160px);
+      background: #7545ff20;
+      filter: blur(75px);
+      top: 16%;
+      left: calc(50% - 170px);
       pointer-events: none;
     }
 
-    .hero-content { position: relative; max-width: 850px; }
+    .hero-content {
+      width: 100%;
+      max-width: 850px;
+    }
+
+    /* ORIGINAL LOGO IMAGE */
+
+    .hero-logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 28px;
+    }
+
+    .hero-logo img {
+      display: block;
+      width: 124px;
+      height: 124px;
+      object-fit: contain;
+      border-radius: 25px;
+      box-shadow: 0 12px 45px #8b5cf625;
+    }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 7px 13px;
+      gap: 9px;
+      padding: 7px 14px;
       border: 1px solid #a78bfa40;
       background: #8b5cf610;
       color: #c5b5ff;
       border-radius: 100px;
-      font-size: .83rem;
+      font-size: .82rem;
+      font-weight: 750;
+      letter-spacing: .5px;
       margin-bottom: 27px;
     }
 
     .eyebrow i {
       width: 7px;
       height: 7px;
+      flex: 0 0 7px;
       background: #a78bfa;
       border-radius: 50%;
+      box-shadow: 0 0 12px #a78bfa70;
     }
 
     h1 {
-      font-size: clamp(2.8rem, 8vw, 5.8rem);
-      line-height: 1.04;
+      font-size: clamp(2.7rem, 8vw, 5.8rem);
+      line-height: 1.07;
       letter-spacing: -4px;
       font-weight: 900;
     }
@@ -186,12 +265,16 @@
     }
 
     .microcopy {
-      color: #85829f;
-      font-size: .83rem;
-      margin-top: 18px;
+      color: #9995b2;
+      font-size: .85rem;
+      margin-top: 20px;
     }
 
-    .section { padding: 90px 0; }
+    /* COMMON SECTIONS */
+
+    .section {
+      padding: 88px 0;
+    }
 
     .section-heading {
       text-align: center;
@@ -214,11 +297,16 @@
       margin: 12px 0;
     }
 
-    .section-heading p, .muted { color: var(--muted); }
+    .section-heading p,
+    .muted {
+      color: var(--muted);
+    }
+
+    /* FEATURES */
 
     .features {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 17px;
     }
 
@@ -227,7 +315,9 @@
       border: 1px solid var(--border);
       border-radius: 22px;
       padding: 25px;
-      transition: transform .2s, border-color .2s;
+      transition:
+        transform .2s ease,
+        border-color .2s ease;
     }
 
     .feature:hover {
@@ -244,51 +334,22 @@
       margin-bottom: 18px;
       background: linear-gradient(135deg, #8b5cf629, #536ff126);
       border: 1px solid #a78bfa25;
+      color: #d2c2ff;
       font-size: 22px;
     }
 
-    h3 { font-size: 1.12rem; margin-bottom: 8px; }
-    .feature p { color: var(--muted); font-size: .93rem; }
-
-    .showcase {
-      background: linear-gradient(180deg, transparent, #11102070, transparent);
+    h3 {
+      font-size: 1.12rem;
+      line-height: 1.4;
+      margin-bottom: 9px;
     }
 
-    .screens-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 22px;
+    .feature p {
+      color: var(--muted);
+      font-size: .93rem;
     }
 
-    .screen-card {
-      padding: 14px;
-      border: 1px solid var(--border);
-      background: #11111e;
-      border-radius: 23px;
-    }
-
-    .screen-placeholder {
-      min-height: 220px;
-      border-radius: 15px;
-      background:
-        radial-gradient(ellipse at 50% 20%, #54359a55, transparent 65%),
-        #090912;
-      border: 1px dashed #8b79bd70;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      padding: 25px;
-      color: #b8add6;
-    }
-
-    .screen-placeholder strong {
-      display: block;
-      color: white;
-      margin-bottom: 6px;
-    }
-
-    .screen-caption { padding: 16px 5px 5px; }
-    .screen-caption p { color: var(--muted); font-size: .9rem; }
+    /* PHILOSOPHY */
 
     .philosophy {
       text-align: center;
@@ -300,15 +361,32 @@
         #10101c;
     }
 
-    .philosophy h2 { max-width: 750px; margin: 15px auto; }
-    .philosophy p { color: var(--muted); max-width: 630px; margin: auto; }
+    .philosophy h2 {
+      max-width: 750px;
+      margin: 15px auto;
+    }
+
+    .philosophy p {
+      color: var(--muted);
+      max-width: 630px;
+      margin: auto;
+    }
+
+    /* DOWNLOAD */
 
     .download-card {
       text-align: center;
       padding: 65px 25px;
       border-radius: 28px;
       border: 1px solid #8c76ff40;
-      background: linear-gradient(135deg, #21163b, #11152b 70%, #10101a);
+      background:
+        radial-gradient(ellipse at 50% 0%, #7047d225, transparent 65%),
+        linear-gradient(135deg, #21163b, #11152b 70%, #10101a);
+    }
+
+    .download-card h2 {
+      max-width: 750px;
+      margin: 12px auto;
     }
 
     .download-card p {
@@ -325,11 +403,14 @@
       background: #ffffff08;
       color: #d8ceff;
       font-weight: 750;
+      font-size: .94rem;
     }
+
+    /* FOOTER */
 
     footer {
       padding: 30px 0;
-      margin-top: 70px;
+      margin-top: 45px;
       border-top: 1px solid var(--border);
       color: #8f8ba8;
       font-size: .86rem;
@@ -337,34 +418,191 @@
 
     .footer-inner {
       display: flex;
+      align-items: center;
       justify-content: space-between;
       gap: 18px;
       flex-wrap: wrap;
     }
 
-    @media (max-width: 760px) {
-      .nav { min-height: 68px; }
-      .nav-links { gap: 13px; font-size: .82rem; }
-      .nav-links .hide-mobile { display: none; }
-      .brand { font-size: 1.05rem; }
-      .logo { width: 38px; height: 38px; }
-      .hero { min-height: auto; padding: 90px 0 70px; }
-      h1 { letter-spacing: -2px; }
-      .features { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .section { padding: 65px 0; }
+    .footer-brand {
+      color: #f7f5ff;
+      font-weight: 850;
+      font-size: 1.08rem;
+      letter-spacing: -.4px;
     }
 
+    .footer-brand .brand-two {
+      color: #b39aff;
+    }
+
+    /* TABLET */
+
+    @media (max-width: 760px) {
+      .nav {
+        min-height: 68px;
+        gap: 12px;
+      }
+
+      .brand {
+        font-size: 1.12rem;
+      }
+
+      .nav-links {
+        gap: 15px;
+        font-size: .84rem;
+      }
+
+      .nav-links .nav-cta {
+        padding: 8px 11px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 75px 0 65px;
+      }
+
+      .hero-logo img {
+        width: 112px;
+        height: 112px;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+
+      .features {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .section {
+        padding: 65px 0;
+      }
+
+      .philosophy {
+        padding: 58px 23px;
+      }
+    }
+
+    /* MOBILE */
+
     @media (max-width: 480px) {
-      .features, .screens-grid { grid-template-columns: 1fr; }
-      .nav-links { gap: 10px; }
-      .nav-links a { font-size: .78rem; }
-      .hero p { font-size: 1rem; }
-      .feature { padding: 22px; }
-      .screen-placeholder { min-height: 190px; }
+      .container {
+        width: 90%;
+      }
+
+      .nav {
+        min-height: 64px;
+      }
+
+      .brand {
+        font-size: 1.02rem;
+      }
+
+      .nav-links {
+        gap: 11px;
+      }
+
+      .nav-links a {
+        font-size: .78rem;
+      }
+
+      .nav-links .nav-cta {
+        padding: 7px 9px;
+        border-radius: 10px;
+      }
+
+      .hero {
+        padding: 62px 0 55px;
+      }
+
+      .hero-logo {
+        margin-bottom: 24px;
+      }
+
+      .hero-logo img {
+        width: 100px;
+        height: 100px;
+        border-radius: 21px;
+      }
+
+      .eyebrow {
+        font-size: .74rem;
+        margin-bottom: 22px;
+      }
+
+      h1 {
+        font-size: clamp(2.45rem, 10vw, 3.4rem);
+        letter-spacing: -1.8px;
+      }
+
+      .hero p {
+        font-size: .97rem;
+        margin: 22px auto 25px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+        max-width: 320px;
+        margin: auto;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .feature {
+        padding: 22px;
+      }
+
+      .section-heading {
+        margin-bottom: 30px;
+      }
+
+      h2 {
+        letter-spacing: -1px;
+      }
+
+      .philosophy {
+        padding: 48px 20px;
+        border-radius: 23px;
+      }
+
+      .download-card {
+        padding: 48px 20px;
+        border-radius: 23px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+    }
+
+    @media (max-width: 350px) {
+      .nav-links {
+        gap: 8px;
+      }
+
+      .nav-links a {
+        font-size: .72rem;
+      }
+
+      .brand {
+        font-size: .96rem;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
+      *,
+      *::before,
+      *::after {
         scroll-behavior: auto !important;
         transition: none !important;
       }
@@ -373,25 +611,44 @@
 </head>
 
 <body>
+
+  <!-- HEADER -->
   <header>
     <div class="container nav">
+
       <a class="brand" href="#home" aria-label="Page2Reel home">
-        <div class="logo">P2R</div>
-        <span>Page<span>2</span>Reel</span>
+        <span>Page<span class="brand-two">2</span>Reel</span>
       </a>
 
       <nav class="nav-links" aria-label="Main navigation">
         <a href="#features">Features</a>
-        <a class="hide-mobile" href="#screenshots">App Preview</a>
-        <a href="#download">Get the App</a>
+        <a class="nav-cta" href="#download">Get the App</a>
       </nav>
+
     </div>
   </header>
 
   <main>
+
+    <!-- HERO -->
     <section class="hero container" id="home">
       <div class="hero-content">
-        <div class="eyebrow"><i></i> YOUR CREATIVE SPACE</div>
+
+        <!-- Original logo image -->
+        <div class="hero-logo">
+          <img
+            src="Canva%20AI%20Image%20Oct%209,%202026,%207_38_31%20AM_20261009_073944_0000.jpg"
+            alt="Page2Reel app logo"
+            width="124"
+            height="124"
+            fetchpriority="high"
+          >
+        </div>
+
+        <div class="eyebrow">
+          <i aria-hidden="true"></i>
+          YOUR CREATIVE SPACE
+        </div>
 
         <h1>
           Think It.<br>
@@ -407,21 +664,30 @@
 
         <div class="hero-actions">
           <a class="button button-primary" href="#download">
-            Explore Page2Reel <span aria-hidden="true">↗</span>
+            Explore Page2Reel
+            <span aria-hidden="true">↗</span>
           </a>
+
           <a class="button button-secondary" href="#features">
-            Discover Features ↓
+            Discover Features
+            <span aria-hidden="true">↓</span>
           </a>
         </div>
 
-        <div class="microcopy">Made for the stories only you can tell.</div>
+        <div class="microcopy">
+          Made for the stories only you can tell.
+        </div>
+
       </div>
     </section>
 
+    <!-- FEATURES -->
     <section class="section container" id="features">
       <div class="section-heading">
         <div class="kicker">Made for your workflow</div>
+
         <h2>Everything starts with an idea.</h2>
+
         <p>
           Keep your creative process organized, from the first thought
           to the screenplay you're building.
@@ -429,166 +695,148 @@
       </div>
 
       <div class="features">
+
         <article class="feature">
           <div class="feature-icon" aria-hidden="true">✍</div>
           <h3>Screenplay Writing</h3>
-          <p>Focus on your scenes, characters, dialogue and the story unfolding on the page.</p>
+          <p>
+            Focus on your scenes, characters, dialogue and the story
+            unfolding on the page.
+          </p>
         </article>
 
         <article class="feature">
           <div class="feature-icon" aria-hidden="true">▤</div>
           <h3>Stories, Ideas & Notes</h3>
-          <p>Capture inspiration and keep your stories, ideas and notes together in Scratchpad.</p>
+          <p>
+            Capture inspiration and keep your stories, ideas and notes
+            together in Scratchpad.
+          </p>
         </article>
 
         <article class="feature">
           <div class="feature-icon" aria-hidden="true">▦</div>
           <h3>Organized Projects</h3>
-          <p>Keep your writing projects organized and return to your work when inspiration strikes.</p>
+          <p>
+            Keep your writing projects organized and return to your work
+            whenever inspiration strikes.
+          </p>
         </article>
 
         <article class="feature">
           <div class="feature-icon" aria-hidden="true">↻</div>
           <h3>Auto-Save</h3>
-          <p>Keep your writing workflow moving without needing to stop after every thought to save manually.</p>
+          <p>
+            Keep your writing moving with automatic saving, so you can
+            focus on your next thought.
+          </p>
         </article>
 
         <article class="feature">
           <div class="feature-icon" aria-hidden="true">⇧</div>
           <h3>Import & Export</h3>
-          <p>Bring existing work into your workflow and export your writing in supported formats.</p>
+          <p>
+            Bring existing work into your workflow and export your writing
+            in supported formats.
+          </p>
         </article>
 
         <article class="feature">
           <div class="feature-icon" aria-hidden="true">▧</div>
-          <h3>Title Page</h3>
-          <p>Give your screenplay a dedicated title page with the details of your project.</p>
+          <h3>Screenplay Title Page</h3>
+          <p>
+            Give your screenplay a dedicated title page with the details
+            of your project.
+          </p>
         </article>
 
         <article class="feature">
           <div class="feature-icon" aria-hidden="true">↶</div>
           <h3>Recycle Bin</h3>
-          <p>Keep deleted projects separate from your active workspace while managing your work.</p>
+          <p>
+            Manage deleted projects separately from your active writing
+            workspace.
+          </p>
         </article>
 
         <article class="feature">
           <div class="feature-icon" aria-hidden="true">◉</div>
           <h3>A Focused Workspace</h3>
-          <p>A writing-first space designed to keep the attention on your ideas and your words.</p>
+          <p>
+            A writing-first space designed to keep the attention on your
+            ideas, your scenes and your words.
+          </p>
         </article>
 
         <article class="feature">
           <div class="feature-icon" aria-hidden="true">✧</div>
           <h3>Your Creative Journey</h3>
-          <p>Build your stories one scene, one note and one small idea at a time.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section showcase" id="screenshots">
-      <div class="container">
-        <div class="section-heading">
-          <div class="kicker">Inside the app</div>
-          <h2>Your writing space, at a glance.</h2>
           <p>
-            Explore the main parts of the Page2Reel experience.
-            Official app screenshots will appear here once added.
+            Build your stories one scene, one note and one small idea
+            at a time.
           </p>
-        </div>
+        </article>
 
-        <div class="screens-grid">
-          <article class="screen-card">
-            <div class="screen-placeholder">
-              <div>
-                <strong>Home & Writing Pulse</strong>
-                Add your original home screen image as
-                <code>images/home.png</code>
-              </div>
-            </div>
-            <div class="screen-caption">
-              <h3>Your Writing Home</h3>
-              <p>See your writing activity and get back to your projects.</p>
-            </div>
-          </article>
-
-          <article class="screen-card">
-            <div class="screen-placeholder">
-              <div>
-                <strong>Create New Project</strong>
-                Add your original project screen as
-                <code>images/new-project.png</code>
-              </div>
-            </div>
-            <div class="screen-caption">
-              <h3>Start Something New</h3>
-              <p>Create a project or bring existing writing into your workspace.</p>
-            </div>
-          </article>
-
-          <article class="screen-card">
-            <div class="screen-placeholder">
-              <div>
-                <strong>Screenplay Editor</strong>
-                Add your original editor image as
-                <code>images/screenplay.png</code>
-              </div>
-            </div>
-            <div class="screen-caption">
-              <h3>Write Your Screenplay</h3>
-              <p>Give your characters, scenes and dialogue room to develop.</p>
-            </div>
-          </article>
-
-          <article class="screen-card">
-            <div class="screen-placeholder">
-              <div>
-                <strong>Scratchpad</strong>
-                Add your original Scratchpad image as
-                <code>images/scratchpad.png</code>
-              </div>
-            </div>
-            <div class="screen-caption">
-              <h3>Catch Every Idea</h3>
-              <p>Keep stories, ideas and notes together as inspiration arrives.</p>
-            </div>
-          </article>
-        </div>
       </div>
     </section>
 
+    <!-- PHILOSOPHY -->
     <section class="section container">
       <div class="philosophy">
+
         <div class="kicker">The Page2Reel philosophy</div>
-        <h2>No AI. No shortcuts.<br><span class="gradient-text">Just your story.</span></h2>
+
+        <h2>
+          No AI. No shortcuts.<br>
+          <span class="gradient-text">Just your story.</span>
+        </h2>
+
         <p>
           No AI-generated writing. No shortcuts. Just a focused space
-          for your own ideas, your own words, and your creative journey.
+          for your own ideas, your own words and your creative journey.
           The story begins with you.
         </p>
+
       </div>
     </section>
 
+    <!-- DOWNLOAD -->
     <section class="section container" id="download">
       <div class="download-card">
+
         <div class="kicker">Your next story starts here</div>
+
         <h2>Ready to turn pages into reels?</h2>
+
         <p>
           Page2Reel is getting ready for its next chapter.
-          The official Android download link will be added here when it is ready.
+          The official Android download link will be added here
+          when the app is ready.
         </p>
-        <span class="coming-soon">Android app · Coming Soon</span>
+
+        <span class="coming-soon">
+          Android App · Coming Soon
+        </span>
+
       </div>
     </section>
+
   </main>
 
+  <!-- FOOTER -->
   <footer>
     <div class="container footer-inner">
-      <a class="brand" href="#home">
-        <div class="logo">P2R</div>
-        <span>Page<span>2</span>Reel</span>
+
+      <a class="footer-brand" href="#home" aria-label="Page2Reel home">
+        Page<span class="brand-two">2</span>Reel
       </a>
+
       <p>Think It. Write It. Create It.</p>
-      <p>© <span id="year">2026</span> Page2Reel</p>
+
+      <p>
+        © <span id="year">2026</span> Page2Reel
+      </p>
+
     </div>
   </footer>
 
@@ -596,5 +844,6 @@
     document.getElementById("year").textContent =
       new Date().getFullYear();
   </script>
+
 </body>
 </html>
