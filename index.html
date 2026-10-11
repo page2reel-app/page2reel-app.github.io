@@ -2,490 +2,224 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#080812">
-  <meta name="description" content="Page2Reel — a focused writing space for screenplays, stories and ideas. Think It. Write It. Create It.">
+  <meta name="description" content="Page2Reel is a focused writing space for stories, ideas, and screenplays. Your story. Your thoughts. Your words.">
   <title>Page2Reel — Think It. Write It. Create It.</title>
-
-  <!-- Original Page2Reel icon: add your image at assets/p2r-icon.png -->
-  <link rel="icon" type="image/png" href="assets/p2r-icon.png">
-  <link rel="apple-touch-icon" href="assets/p2r-icon.png">
-
   <style>
     :root {
+      color-scheme: dark;
       --bg: #080812;
-      --bg2: #0d0d1b;
-      --panel: rgba(20, 20, 39, .78);
-      --border: rgba(174, 151, 255, .17);
+      --panel: #111120;
+      --panel-2: #151529;
       --text: #f7f5ff;
-      --muted: #aaa8c1;
-      --purple: #a879ff;
-      --blue: #668cff;
-      --cyan: #65d8ff;
-      --pink: #ed8aff;
+      --muted: #aaa8c2;
+      --purple: #9b7bff;
+      --purple-2: #7354f6;
+      --blue: #6aa7ff;
+      --line: rgba(190, 178, 255, .16);
       --radius: 22px;
-      --max: 1160px;
+      --max: 1120px;
     }
-
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; scroll-padding-top: 90px; }
     body {
       margin: 0;
-      color: var(--text);
       background:
-        radial-gradient(ellipse at 12% 8%, rgba(104, 57, 190, .17), transparent 32rem),
-        radial-gradient(ellipse at 88% 28%, rgba(45, 86, 190, .12), transparent 32rem),
+        radial-gradient(ellipse at 78% 2%, rgba(102, 69, 220, .18), transparent 34rem),
+        radial-gradient(ellipse at 0% 42%, rgba(49, 87, 190, .10), transparent 32rem),
         var(--bg);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system,
-        BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.65;
-      overflow-x: hidden;
+      overflow-wrap: anywhere;
     }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: .13;
-      z-index: -1;
-      background-image: radial-gradient(#bba7ff 0.65px, transparent 0.65px);
-      background-size: 27px 27px;
-      mask-image: linear-gradient(to bottom, black, transparent 75%);
-    }
-
     a { color: inherit; text-decoration: none; }
     button, a { -webkit-tap-highlight-color: transparent; }
-    button { font: inherit; }
-    img { max-width: 100%; display: block; }
-    .container { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
-
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
     .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 50;
+      position: sticky; top: 0; z-index: 20;
       background: rgba(8, 8, 18, .82);
-      border-bottom: 1px solid rgba(255,255,255,.07);
+      border-bottom: 1px solid rgba(190, 178, 255, .10);
       backdrop-filter: blur(18px);
     }
-
-    .nav {
-      min-height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
+    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: -.035em; font-size: 1.12rem; }
+    .brand img { width: 42px; height: 42px; object-fit: contain; border-radius: 12px; }
+    .brand-mark {
+      width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center;
+      background: linear-gradient(145deg, #8f6bff, #4432a7); color: white; font-weight: 900;
+      box-shadow: 0 8px 28px rgba(115, 84, 246, .25);
     }
-
-    .brand { display: inline-flex; align-items: center; gap: 12px; min-width: 0; }
-    .brand img {
-      width: 43px;
-      height: 43px;
-      object-fit: contain;
-      border-radius: 12px;
+    .nav-links { display: flex; align-items: center; gap: 28px; color: var(--muted); font-size: .94rem; }
+    .nav-links a:hover, .footer-links a:hover { color: white; }
+    .nav-cta, .button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      border: 1px solid rgba(255,255,255,.16); border-radius: 999px; padding: 11px 18px;
+      font-weight: 700; font-size: .92rem; transition: transform .2s, border-color .2s, background .2s;
     }
-    .brand-name { font-size: 1.2rem; font-weight: 800; letter-spacing: -.5px; }
-    .brand-name span {
-      background: linear-gradient(100deg, var(--purple), var(--cyan));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .nav-links { display: flex; align-items: center; gap: 27px; }
-    .nav-links a {
-      color: #c5c1dc;
-      font-size: .91rem;
-      transition: color .2s;
-    }
-    .nav-links a:hover { color: white; }
-
-    .button {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      gap: 9px;
-      min-height: 47px;
-      padding: 12px 19px;
-      border: 1px solid transparent;
-      border-radius: 14px;
-      font-weight: 750;
-      font-size: .94rem;
-      cursor: pointer;
-      transition: transform .2s, border-color .2s, filter .2s;
-    }
-    .button:hover { transform: translateY(-2px); filter: brightness(1.08); }
-    .button-primary {
-      color: white;
-      background: linear-gradient(105deg, #7949e8, #4b70ed 100%);
-      box-shadow: 0 8px 30px rgba(105, 75, 231, .24);
-    }
-    .button-secondary {
-      background: rgba(255,255,255,.035);
-      border-color: var(--border);
-      color: #f2edff;
-    }
-    .button-small { min-height: 40px; padding: 9px 14px; font-size: .86rem; }
-
-    .menu-toggle {
-      display: none;
-      color: white;
-      background: #171529;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 8px 12px;
-      font-size: 1.25rem;
-    }
-
-    .hero { position: relative; padding: 100px 0 86px; }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.08fr .92fr;
-      gap: 65px;
-      align-items: center;
-    }
+    .nav-cta, .button-primary { color: #fff; border-color: transparent; background: linear-gradient(120deg, var(--purple-2), #5d76ed); box-shadow: 0 10px 30px rgba(100, 75, 220, .22); }
+    .button:hover, .nav-cta:hover { transform: translateY(-2px); }
+    .button-secondary { background: rgba(255,255,255,.035); color: var(--text); }
+    .menu-toggle { display: none; border: 1px solid var(--line); background: var(--panel); color: white; border-radius: 12px; padding: 9px 12px; font-size: 1.2rem; }
+    .hero { padding: 92px 0 76px; }
+    .hero-grid { display: grid; grid-template-columns: 1.08fr .92fr; align-items: center; gap: 54px; }
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 7px 12px;
-      border: 1px solid rgba(174, 137, 255, .3);
-      border-radius: 999px;
-      background: rgba(120, 75, 220, .10);
-      color: #d4c5ff;
-      font-size: .8rem;
-      font-weight: 700;
-      letter-spacing: .25px;
+      display: inline-flex; align-items: center; gap: 9px; padding: 7px 12px; border-radius: 999px;
+      border: 1px solid var(--line); background: rgba(255,255,255,.035); color: #d3c9ff;
+      font-size: .78rem; font-weight: 750; letter-spacing: .09em; text-transform: uppercase;
     }
-    .eyebrow-dot {
-      width: 7px; height: 7px; border-radius: 50%;
-      background: #a58aff;
-      box-shadow: 0 0 13px #a58aff;
+    .eyebrow-dot { width: 7px; height: 7px; border-radius: 50%; background: #a68cff; box-shadow: 0 0 14px #9471ff; }
+    h1 { font-size: clamp(2.8rem, 6vw, 5.15rem); line-height: 1.03; letter-spacing: -.065em; margin: 23px 0; max-width: 700px; }
+    .gradient-text { background: linear-gradient(100deg, #c6b6ff 5%, #9b8bff 45%, #77b7ff 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero-copy { max-width: 600px; color: var(--muted); font-size: clamp(1.02rem, 1.7vw, 1.15rem); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .hero-note { color: #8f8da9; font-size: .86rem; margin-top: 17px; }
+    .preview-wrap { position: relative; min-width: 0; }
+    .preview-glow { position: absolute; inset: 10% 5%; background: #6947e8; filter: blur(75px); opacity: .23; pointer-events: none; }
+    .app-preview {
+      position: relative; max-width: 440px; margin: 0 auto; padding: 16px; border: 1px solid rgba(195,181,255,.25);
+      border-radius: 30px; background: linear-gradient(145deg, rgba(31,29,57,.96), rgba(13,13,27,.98));
+      box-shadow: 0 30px 90px rgba(0,0,0,.45), inset 0 1px rgba(255,255,255,.06); transform: rotate(1.2deg);
     }
-
-    h1 {
-      margin: 25px 0 21px;
-      font-size: clamp(3rem, 6.1vw, 5.5rem);
-      line-height: 1.04;
-      letter-spacing: -3.6px;
-      font-weight: 850;
+    .preview-top { display: flex; align-items: center; justify-content: space-between; padding: 8px 8px 17px; color: #b7b3d4; font-size: .82rem; }
+    .preview-brand { display: flex; align-items: center; gap: 9px; color: white; font-weight: 800; }
+    .mini-logo { width: 27px; height: 27px; border-radius: 8px; background: linear-gradient(145deg, #9b7bff, #4e40c4); display: grid; place-items: center; font-size: .7rem; }
+    .preview-card { padding: 18px; border: 1px solid rgba(190,178,255,.12); background: rgba(255,255,255,.035); border-radius: 18px; margin-bottom: 12px; }
+    .preview-greeting { color: #a7a1c7; font-size: .82rem; }
+    .preview-heading { font-size: 1.3rem; font-weight: 800; letter-spacing: -.03em; margin: 3px 0 12px; }
+    .preview-project { display: flex; align-items: center; gap: 12px; padding: 13px; border-radius: 14px; background: rgba(145,119,255,.10); border: 1px solid rgba(145,119,255,.18); }
+    .project-art { flex: 0 0 46px; height: 52px; border-radius: 10px; background: linear-gradient(145deg, #6856bf, #222b55); display: grid; place-items: center; font-size: 1.2rem; }
+    .project-title { font-size: .9rem; font-weight: 750; }
+    .project-sub { color: #a7a1c7; font-size: .75rem; }
+    .preview-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .stat { background: rgba(255,255,255,.035); border: 1px solid rgba(190,178,255,.10); border-radius: 13px; padding: 12px 10px; }
+    .stat strong { display: block; font-size: 1.12rem; }
+    .stat span { color: #a7a1c7; font-size: .7rem; }
+    .writing-lines { display: grid; gap: 9px; padding-top: 7px; }
+    .writing-lines span { height: 6px; border-radius: 10px; background: rgba(199,190,255,.13); }
+    .writing-lines span:nth-child(2) { width: 88%; } .writing-lines span:nth-child(3) { width: 94%; } .writing-lines span:nth-child(4) { width: 63%; }
+    section { padding: 74px 0; }
+    .section-head { max-width: 690px; margin-bottom: 32px; }
+    .kicker { color: #b8a7ff; text-transform: uppercase; letter-spacing: .13em; font-weight: 800; font-size: .76rem; }
+    h2 { font-size: clamp(2rem, 4vw, 3.1rem); line-height: 1.12; letter-spacing: -.05em; margin: 12px 0; }
+    .section-copy { color: var(--muted); font-size: 1.02rem; margin: 0; }
+    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+    .feature-card { min-width: 0; padding: 24px; border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(150deg, rgba(23,22,43,.88), rgba(15,15,29,.9)); }
+    .feature-icon { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 14px; background: rgba(139,111,255,.13); border: 1px solid rgba(166,140,255,.19); color: #c8baff; font-size: 1.25rem; }
+    h3 { font-size: 1.1rem; margin: 17px 0 7px; letter-spacing: -.02em; }
+    .feature-card p { margin: 0; color: var(--muted); font-size: .94rem; }
+    .manifesto { padding: 0 0 76px; }
+    .manifesto-panel { padding: clamp(28px, 6vw, 58px); text-align: center; border: 1px solid rgba(165,141,255,.24); border-radius: 28px; background: radial-gradient(ellipse at top, rgba(113,81,224,.18), transparent 65%), var(--panel); }
+    .manifesto-panel blockquote { margin: 0; font-size: clamp(1.8rem, 4.5vw, 3.4rem); line-height: 1.15; font-weight: 850; letter-spacing: -.05em; }
+    .manifesto-panel p { color: var(--muted); max-width: 580px; margin: 18px auto 0; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; counter-reset: steps; }
+    .step { padding: 22px; border-top: 1px solid var(--line); counter-increment: steps; }
+    .step-number { color: #a895ff; font-size: .78rem; font-weight: 850; letter-spacing: .12em; }
+    .step h3 { margin-top: 9px; }
+    .coming-soon { padding-top: 20px; }
+    .coming-panel { display: flex; align-items: center; justify-content: space-between; gap: 25px; padding: 30px; border: 1px solid var(--line); border-radius: 24px; background: linear-gradient(120deg, rgba(105,80,220,.14), rgba(65,106,185,.08)); }
+    .coming-panel h2 { font-size: clamp(1.6rem, 3vw, 2.3rem); margin: 0 0 8px; }
+    .coming-panel p { color: var(--muted); margin: 0; }
+    .soon-pill { flex-shrink: 0; padding: 9px 13px; border: 1px solid rgba(167,145,255,.28); border-radius: 999px; color: #d6cbff; background: rgba(137,108,255,.12); font-size: .82rem; font-weight: 800; }
+    footer { border-top: 1px solid rgba(190,178,255,.12); padding: 28px 0; color: #9693af; font-size: .88rem; }
+    .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .footer-brand { color: white; font-weight: 800; }
+    .footer-links { display: flex; gap: 18px; flex-wrap: wrap; }
+    :focus-visible { outline: 2px solid #b6a1ff; outline-offset: 4px; }
+    @media (max-width: 820px) {
+      .hero { padding-top: 65px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 45px; }
+      .hero-copy { max-width: 650px; }
+      .app-preview { max-width: 500px; transform: none; }
+      .feature-grid { grid-template-columns: repeat(2, 1fr); }
     }
-    .gradient-text {
-      background: linear-gradient(105deg, #b98bff 5%, #8a9dff 53%, #64dfff 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .hero-copy { max-width: 580px; color: var(--muted); font-size: 1.08rem; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 29px; }
-    .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 25px; }
-    .tag {
-      color: #d1cde5;
-      border: 1px solid rgba(255,255,255,.09);
-      background: rgba(255,255,255,.035);
-      padding: 7px 11px;
-      border-radius: 999px;
-      font-size: .79rem;
-    }
-    .tag b { color: #c4a7ff; margin-right: 4px; }
-
-    .hero-art {
-      min-height: 430px;
-      display: grid;
-      place-items: center;
-      position: relative;
-      isolation: isolate;
-    }
-    .orb {
-      position: absolute;
-      width: 330px;
-      height: 330px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, rgba(137,72,246,.27), rgba(49,127,244,.18));
-      filter: blur(24px);
-      z-index: -1;
-    }
-    .showcase {
-      width: min(100%, 440px);
-      padding: 24px;
-      border-radius: 28px;
-      background: linear-gradient(145deg, rgba(30,25,55,.96), rgba(12,16,34,.96));
-      border: 1px solid rgba(183,155,255,.3);
-      box-shadow: 0 30px 100px rgba(0,0,0,.4), 0 0 55px rgba(112,77,232,.12);
-      transform: rotate(1.3deg);
-    }
-    .showcase-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
-    .showcase-label { color: #aaa3c9; font-size: .76rem; letter-spacing: 1.5px; }
-    .live-dot { color: #92e8c1; font-size: .76rem; }
-    .showcase h3 { font-size: 1.5rem; margin: 16px 0 4px; }
-    .showcase-sub { color: #aaa8c1; font-size: .87rem; }
-    .showcase-line { height: 1px; background: rgba(255,255,255,.09); margin: 21px 0; }
-    .workspace-list { display: grid; gap: 11px; }
-    .workspace-item {
-      display: flex; align-items: center; gap: 13px;
-      padding: 13px;
-      border: 1px solid rgba(255,255,255,.07);
-      background: rgba(255,255,255,.035);
-      border-radius: 15px;
-    }
-    .workspace-icon {
-      width: 40px; height: 40px; flex: 0 0 40px;
-      display: grid; place-items: center;
-      border-radius: 12px; font-size: 1.15rem;
-      background: linear-gradient(140deg, rgba(155,103,255,.24), rgba(74,128,255,.13));
-      border: 1px solid rgba(176,150,255,.16);
-    }
-    .workspace-item strong { display: block; font-size: .91rem; }
-    .workspace-item small { display: block; color: #a8a5bd; font-size: .77rem; }
-    .workspace-arrow { margin-left: auto; color: #aaa0cf; }
-
-    section { padding: 82px 0; }
-    .section-head { max-width: 720px; margin: 0 auto 43px; text-align: center; }
-    .section-kicker {
-      color: #bd9bff; font-size: .78rem; font-weight: 800;
-      letter-spacing: 2px; text-transform: uppercase;
-    }
-    h2 {
-      margin: 13px 0;
-      font-size: clamp(2rem, 4vw, 3.15rem);
-      line-height: 1.15;
-      letter-spacing: -1.4px;
-    }
-    .section-head p { margin: 0; color: var(--muted); }
-
-    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; }
-    .feature-card {
-      padding: 25px;
-      border: 1px solid var(--border);
-      background: linear-gradient(145deg, rgba(24,23,46,.84), rgba(14,15,30,.8));
-      border-radius: var(--radius);
-      transition: transform .22s, border-color .22s;
-    }
-    .feature-card:hover { transform: translateY(-4px); border-color: rgba(177,142,255,.45); }
-    .feature-icon {
-      width: 48px; height: 48px; display: grid; place-items: center;
-      border-radius: 15px; margin-bottom: 17px;
-      color: #d2baff; font-size: 1.35rem;
-      background: linear-gradient(140deg, rgba(153,101,255,.22), rgba(76,129,255,.12));
-      border: 1px solid rgba(174,151,255,.18);
-    }
-    .feature-card h3 { margin: 0 0 8px; font-size: 1.08rem; }
-    .feature-card p { color: var(--muted); margin: 0; font-size: .91rem; }
-
-    .philosophy { padding-top: 35px; }
-    .philosophy-panel {
-      position: relative;
-      overflow: hidden;
-      text-align: center;
-      padding: 62px 25px;
-      border: 1px solid rgba(171,139,255,.3);
-      border-radius: 30px;
-      background:
-        radial-gradient(ellipse at 10% 0%, rgba(133,75,238,.23), transparent 45%),
-        radial-gradient(ellipse at 95% 100%, rgba(55,120,244,.18), transparent 45%),
-        #101022;
-    }
-    .philosophy-panel h2 { max-width: 820px; margin: 13px auto 18px; }
-    .philosophy-panel p { max-width: 700px; margin: 0 auto; color: #c0bdd3; }
-    .philosophy-mark { font-size: 2rem; color: #b69aff; }
-
-    .screens-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .screen-card {
-      overflow: hidden;
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      background: rgba(18,18,35,.78);
-    }
-    .screen-image {
-      aspect-ratio: 4 / 5;
-      display: grid;
-      place-items: center;
-      padding: 16px;
-      background:
-        radial-gradient(ellipse at 50% 35%, rgba(111,76,215,.2), transparent 70%),
-        #0d0d1a;
-    }
-    .screen-image img { width: 100%; height: 100%; object-fit: contain; border-radius: 12px; }
-    .screen-image img:not([src]), .screen-image img[src=""] { display: none; }
-    .screen-caption { padding: 18px 20px 20px; }
-    .screen-caption h3 { margin: 0 0 5px; font-size: 1rem; }
-    .screen-caption p { color: var(--muted); font-size: .86rem; margin: 0; }
-    .screens-note { text-align: center; color: var(--muted); font-size: .85rem; margin-top: 18px; }
-
-    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .step-card {
-      padding: 25px;
-      border-radius: 20px;
-      border: 1px solid var(--border);
-      background: rgba(20,20,39,.65);
-    }
-    .step-number {
-      width: 37px; height: 37px; display: grid; place-items: center;
-      border-radius: 12px; font-weight: 800; color: #d8c7ff;
-      background: rgba(150,104,255,.17);
-      margin-bottom: 15px;
-    }
-    .step-card h3 { margin: 0 0 8px; }
-    .step-card p { margin: 0; color: var(--muted); font-size: .9rem; }
-
-    .cta { padding-top: 28px; }
-    .cta-panel {
-      text-align: center;
-      padding: 55px 24px;
-      border-radius: 28px;
-      border: 1px solid rgba(164,137,255,.25);
-      background: linear-gradient(115deg, rgba(94,54,172,.19), rgba(49,94,181,.14));
-    }
-    .cta-panel p { color: var(--muted); margin: 0 auto 23px; max-width: 600px; }
-    .coming {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: #d9ceff;
-      background: rgba(160,125,255,.12);
-      border: 1px solid rgba(174,151,255,.25);
-      border-radius: 999px;
-      padding: 9px 14px;
-      font-size: .88rem;
-      font-weight: 750;
-    }
-
-    .footer { padding: 28px 0; border-top: 1px solid rgba(255,255,255,.07); }
-    .footer-inner {
-      display: flex; justify-content: space-between; align-items: center;
-      gap: 20px; flex-wrap: wrap;
-    }
-    .footer p { color: #9793ad; font-size: .84rem; margin: 0; }
-    .footer-links { display: flex; gap: 18px; color: #bdb8d2; font-size: .84rem; }
-
-    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s, transform .65s; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
-      .reveal { opacity: 1; transform: none; }
-    }
-
-    @media (max-width: 900px) {
-      .hero { padding-top: 70px; }
-      .hero-grid { grid-template-columns: 1fr; gap: 30px; }
-      .hero-copy { max-width: 700px; }
-      .hero-art { min-height: 390px; }
-      .showcase { transform: none; }
-      .features-grid { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 600px) {
+      .wrap { width: min(100% - 30px, var(--max)); }
+      .nav { min-height: 68px; }
+      .brand { font-size: 1rem; gap: 9px; }
+      .brand img, .brand-mark { width: 37px; height: 37px; }
+      .menu-toggle { display: inline-flex; }
       .nav-links {
-        display: none; position: absolute; top: 76px; left: 0; right: 0;
-        padding: 20px; background: rgba(10,10,22,.98);
-        border-bottom: 1px solid var(--border);
-        flex-direction: column; align-items: stretch; gap: 0;
+        display: none; position: absolute; left: 15px; right: 15px; top: 68px; padding: 16px;
+        border: 1px solid var(--line); border-radius: 18px; background: #111120; flex-direction: column; align-items: stretch; gap: 0;
+        box-shadow: 0 20px 50px rgba(0,0,0,.45);
       }
       .nav-links.open { display: flex; }
-      .nav-links a { padding: 12px 6px; }
-      .menu-toggle { display: inline-flex; }
-      .nav-cta { display: none; }
+      .nav-links a { padding: 12px 8px; }
+      .nav-cta { text-align: center; margin-top: 5px; }
+      .hero { padding: 52px 0 50px; }
+      h1 { font-size: clamp(2.65rem, 13vw, 4rem); }
+      section { padding: 54px 0; }
+      .feature-grid, .steps { grid-template-columns: 1fr; }
+      .feature-card { padding: 21px; }
+      .coming-panel, .footer-row { align-items: flex-start; flex-direction: column; }
+      .preview-card { padding: 14px; }
+      .manifesto { padding-bottom: 54px; }
     }
-
-    @media (max-width: 600px) {
-      .container { width: min(100% - 30px, var(--max)); }
-      .nav { min-height: 68px; }
-      .brand img { width: 38px; height: 38px; }
-      .brand-name { font-size: 1.08rem; }
-      .nav-links { top: 68px; }
-      .hero { padding: 59px 0 48px; }
-      h1 { font-size: clamp(2.8rem, 13vw, 4.3rem); letter-spacing: -2.5px; }
-      .hero-copy { font-size: 1rem; }
-      .hero-actions { display: grid; grid-template-columns: 1fr; }
-      .hero-actions .button { width: 100%; }
-      .hero-art { min-height: 0; padding: 12px 0; }
-      .showcase { padding: 18px; border-radius: 22px; }
-      section { padding: 62px 0; }
-      .features-grid, .screens-grid, .steps-grid { grid-template-columns: 1fr; }
-      .feature-card { padding: 22px; }
-      .screen-image { aspect-ratio: 5 / 4; }
-      .philosophy-panel { padding: 43px 20px; }
-      .footer-inner { flex-direction: column; align-items: flex-start; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
     }
   </style>
 </head>
-
 <body>
   <header class="topbar">
-    <div class="container nav">
+    <div class="wrap nav">
       <a class="brand" href="#home" aria-label="Page2Reel home">
-        <img src="assets/p2r-icon.png" alt="Page2Reel original logo">
-        <span class="brand-name">Page<span>2Reel</span></span>
+        <img src="assets/p2r-icon.png" alt="Page2Reel icon" onerror="this.style.display='none';this.nextElementSibling.hidden=false">
+        <span class="brand-mark" hidden>P2R</span>
+        <span>Page2Reel</span>
       </a>
-
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navLinks">☰</button>
       <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-        <a href="#home">Home</a>
         <a href="#features">Features</a>
-        <a href="#screenshots">Screenshots</a>
-        <a href="#philosophy">Our Philosophy</a>
+        <a href="#workflow">How it works</a>
+        <a href="#about">Our approach</a>
+        <a class="nav-cta" href="#android">Android app <span aria-hidden="true">↗</span></a>
       </nav>
-
-      <a class="button button-primary button-small nav-cta" href="#download">Android App</a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Open menu"
-        aria-controls="navLinks" aria-expanded="false">☰</button>
     </div>
   </header>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="container hero-grid">
-        <div class="reveal">
-          <div class="eyebrow"><span class="eyebrow-dot"></span> Your Ideas → Beautiful Stories</div>
-          <h1>Think It.<br>Write It.<br><span class="gradient-text">Create It.</span></h1>
-          <p class="hero-copy">
-            Your stories. Your ideas. Your screenplays. A focused writing
-            space to turn your imagination into words. Organize projects,
-            write screenplays, capture ideas in Scratchpad, and keep your
-            work moving with Auto-Save.
-          </p>
-
+  <main id="home">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow"><span class="eyebrow-dot"></span> A writing space built around you</div>
+          <h1>Think It.<br><span class="gradient-text">Write It.</span><br>Create It.</h1>
+          <p class="hero-copy">Every story starts with a thought. Page2Reel gives your stories, ideas, and screenplays a calm, organized space to grow — one word at a time.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#download">Explore the App <span>↗</span></a>
-            <a class="button button-secondary" href="#features">Discover Features <span>↓</span></a>
+            <a class="button button-primary" href="#features">Explore features <span aria-hidden="true">→</span></a>
+            <a class="button button-secondary" href="#android">Discover Page2Reel</a>
           </div>
-
-          <div class="hero-tags" aria-label="Page2Reel principles">
-            <span class="tag"><b>✦</b> Your words</span>
-            <span class="tag"><b>✦</b> No AI writing</span>
-            <span class="tag"><b>✦</b> Focus on stories</span>
-          </div>
+          <p class="hero-note">Made for writers. Designed to keep your words in focus.</p>
         </div>
-
-        <div class="hero-art reveal" aria-label="Page2Reel writing workspace preview">
-          <div class="orb"></div>
-          <div class="showcase">
-            <div class="showcase-top">
-              <span class="showcase-label">YOUR WRITING SPACE</span>
-              <span class="live-dot">● Your workspace</span>
+        <div class="preview-wrap" aria-label="Illustration of the Page2Reel writing workspace">
+          <div class="preview-glow"></div>
+          <div class="app-preview">
+            <div class="preview-top">
+              <div class="preview-brand"><span class="mini-logo">P2R</span> Page2Reel</div>
+              <span>Writing space</span>
             </div>
-            <h3>Every story starts somewhere.</h3>
-            <div class="showcase-sub">One space for the ideas you want to bring to life.</div>
-            <div class="showcase-line"></div>
-            <div class="workspace-list">
-              <div class="workspace-item">
-                <div class="workspace-icon">▤</div>
-                <div><strong>Screenplay Writing</strong><small>Build your screenplay, scene by scene</small></div>
-                <span class="workspace-arrow">↗</span>
+            <div class="preview-card">
+              <div class="preview-greeting">YOUR NEXT IDEA STARTS HERE</div>
+              <div class="preview-heading">Welcome back, writer.</div>
+              <div class="preview-project">
+                <div class="project-art" aria-hidden="true">▤</div>
+                <div><div class="project-title">The Story Begins</div><div class="project-sub">Continue writing · Your project</div></div>
               </div>
-              <div class="workspace-item">
-                <div class="workspace-icon">✎</div>
-                <div><strong>Stories &amp; Ideas</strong><small>Keep your thoughts in Scratchpad</small></div>
-                <span class="workspace-arrow">↗</span>
+            </div>
+            <div class="preview-card">
+              <div class="preview-greeting">YOUR WRITING SPACE</div>
+              <div class="preview-stats">
+                <div class="stat"><strong>Words</strong><span>Track your progress</span></div>
+                <div class="stat"><strong>Pages</strong><span>See it take shape</span></div>
+                <div class="stat"><strong>Ideas</strong><span>Keep them close</span></div>
               </div>
-              <div class="workspace-item">
-                <div class="workspace-icon">▣</div>
-                <div><strong>Organized Projects</strong><small>Keep creative work together</small></div>
-                <span class="workspace-arrow">↗</span>
-              </div>
-              <div class="workspace-item">
-                <div class="workspace-icon">↗</div>
-                <div><strong>Import &amp; Export</strong><small>Move your writing between formats</small></div>
-                <span class="workspace-arrow">↗</span>
-              </div>
+            </div>
+            <div class="preview-card">
+              <div class="preview-greeting">IN THE FLOW</div>
+              <div class="writing-lines" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
             </div>
           </div>
         </div>
@@ -493,43 +227,144 @@
     </section>
 
     <section id="features">
-      <div class="container">
-        <div class="section-head reveal">
-          <div class="section-kicker">Made for your process</div>
-          <h2>A focused space for <span class="gradient-text">every idea.</span></h2>
-          <p>From the first line to a structured screenplay, keep your creative work organized without unnecessary distractions.</p>
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">Made for the work</div>
+          <h2>Your ideas deserve a home.</h2>
+          <p class="section-copy">From the first rough thought to a carefully formatted screenplay, keep your writing together in one focused workspace.</p>
         </div>
-
-        <div class="features-grid">
-          <article class="feature-card reveal">
-            <div class="feature-icon">▤</div>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">▤</div>
             <h3>Screenplay Writing</h3>
-            <p>Write in a dedicated screenplay editor with screenplay-focused formatting and writing tools.</p>
+            <p>Write scenes, action, character names, and dialogue in a dedicated screenplay workspace.</p>
           </article>
-          <article class="feature-card reveal">
-            <div class="feature-icon">✎</div>
-            <h3>Stories, Ideas &amp; Notes</h3>
-            <p>Use Scratchpad to capture story thoughts, ideas and notes in one convenient place.</p>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">✎</div>
+            <h3>Stories & Ideas</h3>
+            <p>Capture story concepts, rough thoughts, and notes in the Scratchpad before they are ready to grow.</p>
           </article>
-          <article class="feature-card reveal">
-            <div class="feature-icon">▣</div>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">▣</div>
             <h3>Organized Projects</h3>
-            <p>Keep your writing projects together so it is easier to find and continue your work.</p>
+            <p>Keep your writing in clear projects so it is easier to return to the work that matters.</p>
           </article>
-          <article class="feature-card reveal">
-            <div class="feature-icon">↻</div>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">↻</div>
             <h3>Auto-Save</h3>
-            <p>Keep your edits moving with the app's automatic saving workflow.</p>
+            <p>Stay focused on writing while your changes are saved automatically as you work.</p>
           </article>
-          <article class="feature-card reveal">
-            <div class="feature-icon">⇧</div>
-            <h3>Import &amp; Export</h3>
-            <p>Bring writing into your workflow and export supported formats for sharing or further editing.</p>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">⇧</div>
+            <h3>Import & Export</h3>
+            <p>Bring writing into your workflow and export your work for sharing or keeping a copy.</p>
           </article>
-          <article class="feature-card reveal">
-            <div class="feature-icon">▧</div>
-            <h3>Title Page</h3>
-            <p>Give your screenplay a dedicated title page with its relevant project details.</p>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">▧</div>
+            <h3>Title Page & Formatting</h3>
+            <p>Prepare a screenplay with title-page details and keep the presentation clear and readable.</p>
           </article>
-          <article class="feature-card reveal">
-            <div cl
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">⌫</div>
+            <h3>Recycle Bin</h3>
+            <p>Keep deleted projects recoverable instead of making an accidental removal feel final.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">◷</div>
+            <h3>Writing Progress</h3>
+            <p>Review meaningful writing activity and project statistics based on your saved work.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">◐</div>
+            <h3>A Comfortable Workspace</h3>
+            <p>Use a clean, dark writing environment designed to keep distractions out of the way.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="manifesto" id="about">
+      <div class="wrap">
+        <div class="manifesto-panel">
+          <div class="kicker">The idea behind Page2Reel</div>
+          <blockquote>Your story.<br><span class="gradient-text">Your thoughts. Your words.</span></blockquote>
+          <p>Writing is personal. The tools around it should support your process, not compete with it. Page2Reel is built around the simple act of getting your ideas onto the page.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="workflow">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">A simple workflow</div>
+          <h2>Start small. Keep going.</h2>
+          <p class="section-copy">You do not need the whole story figured out before you begin.</p>
+        </div>
+        <div class="steps">
+          <article class="step">
+            <div class="step-number">STEP 01</div>
+            <h3>Capture the thought</h3>
+            <p class="section-copy">Put a quick idea or note in your Scratchpad before it slips away.</p>
+          </article>
+          <article class="step">
+            <div class="step-number">STEP 02</div>
+            <h3>Build your project</h3>
+            <p class="section-copy">Choose a project and turn the first thought into a story or screenplay.</p>
+          </article>
+          <article class="step">
+            <div class="step-number">STEP 03</div>
+            <h3>Shape your words</h3>
+            <p class="section-copy">Return to your work, refine it, and export a copy when you are ready.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="coming-soon" id="android">
+      <div class="wrap">
+        <div class="coming-panel">
+          <div>
+            <div class="kicker">Page2Reel for Android</div>
+            <h2>Your writing space, wherever ideas find you.</h2>
+            <p>The Android app is coming soon. Official availability details will be shared here when ready.</p>
+          </div>
+          <span class="soon-pill">Coming Soon</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <div><span class="footer-brand">Page2Reel</span><br><span>Your story starts on a page.</span></div>
+      <div class="footer-links"><a href="#home">Back to top ↑</a><a href="#features">Features</a><a href="#about">Our approach</a></div>
+      <div>Made in India</div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      "use strict";
+    var toggle = document.getElementById("menuToggle");
+      var links = document.getElementById("navLinks");
+      if (!toggle || !links) return;
+
+      toggle.addEventListener("click", function () {
+        var isOpen = links.classList.toggle("open");
+        toggle.setAttribute("aria-expanded", String(isOpen));
+        toggle.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+        toggle.textContent = isOpen ? "✕" : "☰";
+      });
+
+      links.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          links.classList.remove("open");
+          toggle.setAttribute("aria-expanded", "false");
+          toggle.setAttribute("aria-label", "Open navigation menu");
+          toggle.textContent = "☰";
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
